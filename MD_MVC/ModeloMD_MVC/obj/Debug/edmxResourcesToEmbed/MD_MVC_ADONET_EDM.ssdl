@@ -1,0 +1,567 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MD_MVCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Estatus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="nchar" MaxLength="50" />
+    <Property Name="Id_Estatus" Type="int" />
+  </EntityType>
+  <EntityType Name="Condiciones">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Orden">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fecha" Type="date" Nullable="false" />
+    <Property Name="Id_Persona" Type="int" />
+    <Property Name="Id_Tipo" Type="int" Nullable="false" />
+    <Property Name="Id_Condiciones" Type="tinyint" Nullable="false" />
+    <Property Name="Subtotal" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Descuento" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Recargo" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Impuestos" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Total" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Id_Estatus" Type="int" />
+    <Property Name="SecuenciaEditable" Type="varchar" MaxLength="20" />
+    <Property Name="IdEditable" Type="varchar" MaxLength="20" />
+    <Property Name="Secuencia_Gobierno" Type="varchar" MaxLength="20" />
+    <Property Name="Comentario" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Orden_Detalle">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Orden" Type="int" Nullable="false" />
+    <Property Name="Id_Producto" Type="int" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar(max)" Nullable="false" />
+    <Property Name="Cantidad" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Precio" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Impuesto" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Monto" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Orden_Tipo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Secuencia" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Persona">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombres" Type="nvarchar" MaxLength="50" />
+    <Property Name="Apellidos" Type="nvarchar" MaxLength="50" />
+    <Property Name="Nombre_Completo" Type="nvarchar" MaxLength="101" StoreGeneratedPattern="Computed" />
+    <Property Name="Documento" Type="nchar" MaxLength="20" />
+    <Property Name="Titulo" Type="nchar" MaxLength="10" />
+    <Property Name="Contacto" Type="nvarchar" MaxLength="50" />
+    <Property Name="Empresa" Type="nvarchar" MaxLength="200" />
+    <Property Name="Correo" Type="nvarchar" MaxLength="200" />
+    <Property Name="Comentarios" Type="varchar(max)" />
+    <Property Name="Direccion" Type="nvarchar" MaxLength="200" />
+    <Property Name="Direccion_De_Envio" Type="nvarchar" MaxLength="200" />
+    <Property Name="Fecha_Nacimiento" Type="date" />
+    <Property Name="Fecha" Type="datetime" />
+    <Property Name="Balance" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="Limite_Credito" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="Id_Tipo_Persona" Type="tinyint" Nullable="false" />
+    <Property Name="Id_Persona" Type="int" />
+    <Property Name="Id_Estatus" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Persona_Tipo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+    <Property Name="secuencia1" Type="nchar" MaxLength="20" />
+    <Property Name="secuencia2" Type="nchar" MaxLength="20" />
+    <Property Name="secuencia3" Type="nchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Producto">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Codigo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Cantidad" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar(max)" Nullable="false" />
+    <Property Name="Precio" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Costo" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Id_Impuesto" Type="tinyint" Nullable="false" />
+    <Property Name="Id_Tipo" Type="tinyint" Nullable="false" />
+    <Property Name="Id_Estatus" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Producto_Tipo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+    <Property Name="Secuencia1" Type="nchar" MaxLength="10" />
+    <Property Name="Secuencia2" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Tasa_Impuesto">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+    <Property Name="Leyenda" Type="nchar" MaxLength="10" />
+    <Property Name="Tasa" Type="numeric" Precision="4" Scale="2" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'MD_MVC.Orden.v_Orden' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="v_Orden">
+    <Key>
+      <PropertyRef Name="Orden_Id" />
+      <PropertyRef Name="Fecha" />
+      <PropertyRef Name="Id_Tipo" />
+      <PropertyRef Name="Tipo_de_orden_descripcion" />
+      <PropertyRef Name="Id_Condiciones" />
+      <PropertyRef Name="Condiciones_Descripcion" />
+      <PropertyRef Name="Subtotal" />
+      <PropertyRef Name="Descuento" />
+      <PropertyRef Name="Recargo" />
+      <PropertyRef Name="Impuestos" />
+      <PropertyRef Name="Total" />
+    </Key>
+    <Property Name="Orden_Id" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="date" Nullable="false" />
+    <Property Name="Id_Persona" Type="int" />
+    <Property Name="Nombre_Completo" Type="nvarchar" MaxLength="101" />
+    <Property Name="Persona_Tipo_descripcion" Type="varchar" MaxLength="50" />
+    <Property Name="Id_Tipo" Type="int" Nullable="false" />
+    <Property Name="Tipo_de_orden_descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Id_Condiciones" Type="tinyint" Nullable="false" />
+    <Property Name="Condiciones_Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Subtotal" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Descuento" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Recargo" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Impuestos" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Total" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Id_Estatus" Type="int" />
+    <Property Name="Estatus_Descripcion" Type="nchar" MaxLength="50" />
+    <Property Name="SecuenciaEditable" Type="varchar" MaxLength="20" />
+    <Property Name="IdEditable" Type="varchar" MaxLength="20" />
+    <Property Name="Secuencia_Gobierno" Type="varchar" MaxLength="20" />
+    <Property Name="Comentario" Type="varchar(max)" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'MD_MVC.Orden.v_Orden_Completa' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="v_Orden_Completa">
+    <Key>
+      <PropertyRef Name="Orden_Id" />
+      <PropertyRef Name="Fecha" />
+      <PropertyRef Name="Id_Tipo" />
+      <PropertyRef Name="Tipo_de_orden_descripcion" />
+      <PropertyRef Name="Id_Condiciones" />
+      <PropertyRef Name="Condiciones_Descripcion" />
+      <PropertyRef Name="Subtotal" />
+      <PropertyRef Name="Descuento" />
+      <PropertyRef Name="Recargo" />
+      <PropertyRef Name="Impuestos" />
+      <PropertyRef Name="Total" />
+      <PropertyRef Name="Id_Producto" />
+      <PropertyRef Name="Detalles_Descripcion" />
+      <PropertyRef Name="Cantidad" />
+      <PropertyRef Name="Precio" />
+      <PropertyRef Name="Impuesto" />
+      <PropertyRef Name="Monto" />
+    </Key>
+    <Property Name="Orden_Id" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="date" Nullable="false" />
+    <Property Name="Id_Persona" Type="int" />
+    <Property Name="Nombre_Completo" Type="nvarchar" MaxLength="101" />
+    <Property Name="Persona_Tipo_descripcion" Type="varchar" MaxLength="50" />
+    <Property Name="Id_Tipo" Type="int" Nullable="false" />
+    <Property Name="Tipo_de_orden_descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Id_Condiciones" Type="tinyint" Nullable="false" />
+    <Property Name="Condiciones_Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Subtotal" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Descuento" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Recargo" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Impuestos" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Total" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Id_Estatus" Type="int" />
+    <Property Name="Estatus_Descripcion" Type="nchar" MaxLength="50" />
+    <Property Name="SecuenciaEditable" Type="varchar" MaxLength="20" />
+    <Property Name="IdEditable" Type="varchar" MaxLength="20" />
+    <Property Name="Secuencia_Gobierno" Type="varchar" MaxLength="20" />
+    <Property Name="Comentario" Type="varchar(max)" />
+    <Property Name="Id_Producto" Type="int" Nullable="false" />
+    <Property Name="Detalles_Descripcion" Type="varchar(max)" Nullable="false" />
+    <Property Name="Cantidad" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Precio" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Impuesto" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Monto" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'MD_MVC.Persona.v_Persona' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="v_Persona">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Id_Tipo_Persona" />
+      <PropertyRef Name="Id_Estatus" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Nombres" Type="nvarchar" MaxLength="50" />
+    <Property Name="Apellidos" Type="nvarchar" MaxLength="50" />
+    <Property Name="Nombre_Completo" Type="nvarchar" MaxLength="101" />
+    <Property Name="Documento" Type="nchar" MaxLength="20" />
+    <Property Name="Titulo" Type="nchar" MaxLength="10" />
+    <Property Name="Contacto" Type="nvarchar" MaxLength="50" />
+    <Property Name="Empresa" Type="nvarchar" MaxLength="200" />
+    <Property Name="Correo" Type="nvarchar" MaxLength="200" />
+    <Property Name="Comentarios" Type="varchar(max)" />
+    <Property Name="Direccion" Type="nvarchar" MaxLength="200" />
+    <Property Name="Direccion_De_Envio" Type="nvarchar" MaxLength="200" />
+    <Property Name="Fecha_Nacimiento" Type="date" />
+    <Property Name="Fecha" Type="date" />
+    <Property Name="Balance" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="Limite_Credito" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="Id_Tipo_Persona" Type="tinyint" Nullable="false" />
+    <Property Name="Tipo_Persona" Type="varchar" MaxLength="50" />
+    <Property Name="Id_Persona" Type="int" />
+    <Property Name="Id_Estatus" Type="int" Nullable="false" />
+    <Property Name="Estatus_Descripcion" Type="nchar" MaxLength="50" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'MD_MVC.Productos.v_Producto' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="v_Producto">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Codigo" />
+      <PropertyRef Name="Cantidad" />
+      <PropertyRef Name="Descripcion" />
+      <PropertyRef Name="Precio" />
+      <PropertyRef Name="Costo" />
+      <PropertyRef Name="Id_Impuesto" />
+      <PropertyRef Name="Tasa" />
+      <PropertyRef Name="Id_Tipo" />
+      <PropertyRef Name="Id_Estatus" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Codigo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Cantidad" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar(max)" Nullable="false" />
+    <Property Name="Precio" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Costo" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Id_Impuesto" Type="tinyint" Nullable="false" />
+    <Property Name="Descripcion_Impuesto" Type="varchar" MaxLength="50" />
+    <Property Name="Leyenda" Type="nchar" MaxLength="10" />
+    <Property Name="Tasa" Type="numeric" Precision="4" Scale="2" Nullable="false" />
+    <Property Name="Id_Tipo" Type="tinyint" Nullable="false" />
+    <Property Name="Tipo_Descripcion" Type="varchar" MaxLength="50" />
+    <Property Name="Id_Estatus" Type="int" Nullable="false" />
+    <Property Name="Estatus_Descripcion" Type="nchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Orden_Condiciones">
+    <End Role="Condiciones" Type="Self.Condiciones" Multiplicity="1" />
+    <End Role="Orden" Type="Self.Orden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Condiciones">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Orden">
+        <PropertyRef Name="Id_Condiciones" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orden_Detalle_Orden">
+    <End Role="Orden" Type="Self.Orden" Multiplicity="1" />
+    <End Role="Orden_Detalle" Type="Self.Orden_Detalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orden">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Orden_Detalle">
+        <PropertyRef Name="Id_Orden" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orden_Detalle_Producto">
+    <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+    <End Role="Orden_Detalle" Type="Self.Orden_Detalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Orden_Detalle">
+        <PropertyRef Name="Id_Producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orden_Estatus">
+    <End Role="Estatus" Type="Self.Estatus" Multiplicity="0..1" />
+    <End Role="Orden" Type="Self.Orden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estatus">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Orden">
+        <PropertyRef Name="Id_Estatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orden_Orden_Tipo">
+    <End Role="Orden_Tipo" Type="Self.Orden_Tipo" Multiplicity="1" />
+    <End Role="Orden" Type="Self.Orden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orden_Tipo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Orden">
+        <PropertyRef Name="Id_Tipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Persona_Estatus">
+    <End Role="Estatus" Type="Self.Estatus" Multiplicity="1" />
+    <End Role="Persona" Type="Self.Persona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estatus">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Persona">
+        <PropertyRef Name="Id_Estatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Persona_Persona_Tipo">
+    <End Role="Persona_Tipo" Type="Self.Persona_Tipo" Multiplicity="1" />
+    <End Role="Persona" Type="Self.Persona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona_Tipo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Persona">
+        <PropertyRef Name="Id_Tipo_Persona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Persona_Persona3">
+    <End Role="Persona" Type="Self.Persona" Multiplicity="0..1" />
+    <End Role="Persona1" Type="Self.Persona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Persona1">
+        <PropertyRef Name="Id_Persona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Producto_Estatus">
+    <End Role="Estatus" Type="Self.Estatus" Multiplicity="1" />
+    <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estatus">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Producto">
+        <PropertyRef Name="Id_Estatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Producto_Producto_Tipo">
+    <End Role="Producto_Tipo" Type="Self.Producto_Tipo" Multiplicity="1" />
+    <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto_Tipo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Producto">
+        <PropertyRef Name="Id_Tipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Producto_Tasa_Impuesto">
+    <End Role="Tasa_Impuesto" Type="Self.Tasa_Impuesto" Multiplicity="1" />
+    <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tasa_Impuesto">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Producto">
+        <PropertyRef Name="Id_Impuesto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MD_MVCModelStoreContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Estatus" EntityType="Self.Estatus" Schema="Miselaneos" store:Type="Tables" />
+    <EntitySet Name="Condiciones" EntityType="Self.Condiciones" Schema="Orden" store:Type="Tables" />
+    <EntitySet Name="Orden" EntityType="Self.Orden" Schema="Orden" store:Type="Tables" />
+    <EntitySet Name="Orden_Detalle" EntityType="Self.Orden_Detalle" Schema="Orden" store:Type="Tables" />
+    <EntitySet Name="Orden_Tipo" EntityType="Self.Orden_Tipo" Schema="Orden" store:Type="Tables" />
+    <EntitySet Name="Persona" EntityType="Self.Persona" Schema="Persona" store:Type="Tables" />
+    <EntitySet Name="Persona_Tipo" EntityType="Self.Persona_Tipo" Schema="Persona" store:Type="Tables" />
+    <EntitySet Name="Producto" EntityType="Self.Producto" Schema="Productos" store:Type="Tables" />
+    <EntitySet Name="Producto_Tipo" EntityType="Self.Producto_Tipo" Schema="Productos" store:Type="Tables" />
+    <EntitySet Name="Tasa_Impuesto" EntityType="Self.Tasa_Impuesto" Schema="Productos" store:Type="Tables" />
+    <EntitySet Name="v_Orden" EntityType="Self.v_Orden" store:Type="Views" store:Schema="Orden">
+      <DefiningQuery>SELECT 
+    [v_Orden].[Orden_Id] AS [Orden_Id], 
+    [v_Orden].[Fecha] AS [Fecha], 
+    [v_Orden].[Id_Persona] AS [Id_Persona], 
+    [v_Orden].[Nombre_Completo] AS [Nombre_Completo], 
+    [v_Orden].[Persona_Tipo_descripcion] AS [Persona_Tipo_descripcion], 
+    [v_Orden].[Id_Tipo] AS [Id_Tipo], 
+    [v_Orden].[Tipo_de_orden_descripcion] AS [Tipo_de_orden_descripcion], 
+    [v_Orden].[Id_Condiciones] AS [Id_Condiciones], 
+    [v_Orden].[Condiciones_Descripcion] AS [Condiciones_Descripcion], 
+    [v_Orden].[Subtotal] AS [Subtotal], 
+    [v_Orden].[Descuento] AS [Descuento], 
+    [v_Orden].[Recargo] AS [Recargo], 
+    [v_Orden].[Impuestos] AS [Impuestos], 
+    [v_Orden].[Total] AS [Total], 
+    [v_Orden].[Id_Estatus] AS [Id_Estatus], 
+    [v_Orden].[Estatus_Descripcion] AS [Estatus_Descripcion], 
+    [v_Orden].[SecuenciaEditable] AS [SecuenciaEditable], 
+    [v_Orden].[IdEditable] AS [IdEditable], 
+    [v_Orden].[Secuencia_Gobierno] AS [Secuencia_Gobierno], 
+    [v_Orden].[Comentario] AS [Comentario]
+    FROM [Orden].[v_Orden] AS [v_Orden]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="v_Orden_Completa" EntityType="Self.v_Orden_Completa" store:Type="Views" store:Schema="Orden">
+      <DefiningQuery>SELECT 
+    [v_Orden_Completa].[Orden_Id] AS [Orden_Id], 
+    [v_Orden_Completa].[Fecha] AS [Fecha], 
+    [v_Orden_Completa].[Id_Persona] AS [Id_Persona], 
+    [v_Orden_Completa].[Nombre_Completo] AS [Nombre_Completo], 
+    [v_Orden_Completa].[Persona_Tipo_descripcion] AS [Persona_Tipo_descripcion], 
+    [v_Orden_Completa].[Id_Tipo] AS [Id_Tipo], 
+    [v_Orden_Completa].[Tipo_de_orden_descripcion] AS [Tipo_de_orden_descripcion], 
+    [v_Orden_Completa].[Id_Condiciones] AS [Id_Condiciones], 
+    [v_Orden_Completa].[Condiciones_Descripcion] AS [Condiciones_Descripcion], 
+    [v_Orden_Completa].[Subtotal] AS [Subtotal], 
+    [v_Orden_Completa].[Descuento] AS [Descuento], 
+    [v_Orden_Completa].[Recargo] AS [Recargo], 
+    [v_Orden_Completa].[Impuestos] AS [Impuestos], 
+    [v_Orden_Completa].[Total] AS [Total], 
+    [v_Orden_Completa].[Id_Estatus] AS [Id_Estatus], 
+    [v_Orden_Completa].[Estatus_Descripcion] AS [Estatus_Descripcion], 
+    [v_Orden_Completa].[SecuenciaEditable] AS [SecuenciaEditable], 
+    [v_Orden_Completa].[IdEditable] AS [IdEditable], 
+    [v_Orden_Completa].[Secuencia_Gobierno] AS [Secuencia_Gobierno], 
+    [v_Orden_Completa].[Comentario] AS [Comentario], 
+    [v_Orden_Completa].[Id_Producto] AS [Id_Producto], 
+    [v_Orden_Completa].[Detalles_Descripcion] AS [Detalles_Descripcion], 
+    [v_Orden_Completa].[Cantidad] AS [Cantidad], 
+    [v_Orden_Completa].[Precio] AS [Precio], 
+    [v_Orden_Completa].[Impuesto] AS [Impuesto], 
+    [v_Orden_Completa].[Monto] AS [Monto]
+    FROM [Orden].[v_Orden_Completa] AS [v_Orden_Completa]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="v_Persona" EntityType="Self.v_Persona" store:Type="Views" store:Schema="Persona">
+      <DefiningQuery>SELECT 
+    [v_Persona].[Id] AS [Id], 
+    [v_Persona].[Nombres] AS [Nombres], 
+    [v_Persona].[Apellidos] AS [Apellidos], 
+    [v_Persona].[Nombre_Completo] AS [Nombre_Completo], 
+    [v_Persona].[Documento] AS [Documento], 
+    [v_Persona].[Titulo] AS [Titulo], 
+    [v_Persona].[Contacto] AS [Contacto], 
+    [v_Persona].[Empresa] AS [Empresa], 
+    [v_Persona].[Correo] AS [Correo], 
+    [v_Persona].[Comentarios] AS [Comentarios], 
+    [v_Persona].[Direccion] AS [Direccion], 
+    [v_Persona].[Direccion_De_Envio] AS [Direccion_De_Envio], 
+    [v_Persona].[Fecha_Nacimiento] AS [Fecha_Nacimiento], 
+    [v_Persona].[Fecha] AS [Fecha], 
+    [v_Persona].[Balance] AS [Balance], 
+    [v_Persona].[Limite_Credito] AS [Limite_Credito], 
+    [v_Persona].[Id_Tipo_Persona] AS [Id_Tipo_Persona], 
+    [v_Persona].[Tipo_Persona] AS [Tipo_Persona], 
+    [v_Persona].[Id_Persona] AS [Id_Persona], 
+    [v_Persona].[Id_Estatus] AS [Id_Estatus], 
+    [v_Persona].[Estatus_Descripcion] AS [Estatus_Descripcion]
+    FROM [Persona].[v_Persona] AS [v_Persona]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="v_Producto" EntityType="Self.v_Producto" store:Type="Views" store:Schema="Productos">
+      <DefiningQuery>SELECT 
+    [v_Producto].[Id] AS [Id], 
+    [v_Producto].[Codigo] AS [Codigo], 
+    [v_Producto].[Cantidad] AS [Cantidad], 
+    [v_Producto].[Descripcion] AS [Descripcion], 
+    [v_Producto].[Precio] AS [Precio], 
+    [v_Producto].[Costo] AS [Costo], 
+    [v_Producto].[Id_Impuesto] AS [Id_Impuesto], 
+    [v_Producto].[Descripcion_Impuesto] AS [Descripcion_Impuesto], 
+    [v_Producto].[Leyenda] AS [Leyenda], 
+    [v_Producto].[Tasa] AS [Tasa], 
+    [v_Producto].[Id_Tipo] AS [Id_Tipo], 
+    [v_Producto].[Tipo_Descripcion] AS [Tipo_Descripcion], 
+    [v_Producto].[Id_Estatus] AS [Id_Estatus], 
+    [v_Producto].[Estatus_Descripcion] AS [Estatus_Descripcion]
+    FROM [Productos].[v_Producto] AS [v_Producto]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Orden_Condiciones" Association="Self.FK_Orden_Condiciones">
+      <End Role="Condiciones" EntitySet="Condiciones" />
+      <End Role="Orden" EntitySet="Orden" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orden_Detalle_Orden" Association="Self.FK_Orden_Detalle_Orden">
+      <End Role="Orden" EntitySet="Orden" />
+      <End Role="Orden_Detalle" EntitySet="Orden_Detalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orden_Detalle_Producto" Association="Self.FK_Orden_Detalle_Producto">
+      <End Role="Producto" EntitySet="Producto" />
+      <End Role="Orden_Detalle" EntitySet="Orden_Detalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orden_Estatus" Association="Self.FK_Orden_Estatus">
+      <End Role="Estatus" EntitySet="Estatus" />
+      <End Role="Orden" EntitySet="Orden" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orden_Orden_Tipo" Association="Self.FK_Orden_Orden_Tipo">
+      <End Role="Orden_Tipo" EntitySet="Orden_Tipo" />
+      <End Role="Orden" EntitySet="Orden" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Persona_Estatus" Association="Self.FK_Persona_Estatus">
+      <End Role="Estatus" EntitySet="Estatus" />
+      <End Role="Persona" EntitySet="Persona" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Persona_Persona_Tipo" Association="Self.FK_Persona_Persona_Tipo">
+      <End Role="Persona_Tipo" EntitySet="Persona_Tipo" />
+      <End Role="Persona" EntitySet="Persona" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Persona_Persona3" Association="Self.FK_Persona_Persona3">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="Persona1" EntitySet="Persona" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Producto_Estatus" Association="Self.FK_Producto_Estatus">
+      <End Role="Estatus" EntitySet="Estatus" />
+      <End Role="Producto" EntitySet="Producto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Producto_Producto_Tipo" Association="Self.FK_Producto_Producto_Tipo">
+      <End Role="Producto_Tipo" EntitySet="Producto_Tipo" />
+      <End Role="Producto" EntitySet="Producto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Producto_Tasa_Impuesto" Association="Self.FK_Producto_Tasa_Impuesto">
+      <End Role="Tasa_Impuesto" EntitySet="Tasa_Impuesto" />
+      <End Role="Producto" EntitySet="Producto" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

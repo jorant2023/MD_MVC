@@ -1,0 +1,488 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MD_MVCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Estatus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Id_Estatus" Type="Int32" />
+    <NavigationProperty Name="Orden" Relationship="Self.FK_Orden_Estatus" FromRole="Estatus" ToRole="Orden" />
+    <NavigationProperty Name="Persona" Relationship="Self.FK_Persona_Estatus" FromRole="Estatus" ToRole="Persona" />
+    <NavigationProperty Name="Producto" Relationship="Self.FK_Producto_Estatus" FromRole="Estatus" ToRole="Producto" />
+  </EntityType>
+  <EntityType Name="Condiciones">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Orden" Relationship="Self.FK_Orden_Condiciones" FromRole="Condiciones" ToRole="Orden" />
+  </EntityType>
+  <EntityType Name="Orden">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Id_Persona" Type="Int32" />
+    <Property Name="Id_Tipo" Type="Int32" Nullable="false" />
+    <Property Name="Id_Condiciones" Type="Byte" Nullable="false" />
+    <Property Name="Subtotal" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Descuento" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Recargo" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Impuestos" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Total" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Id_Estatus" Type="Int32" />
+    <Property Name="SecuenciaEditable" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="IdEditable" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Secuencia_Gobierno" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Estatus" Relationship="Self.FK_Orden_Estatus" FromRole="Orden" ToRole="Estatus" />
+    <NavigationProperty Name="Condiciones" Relationship="Self.FK_Orden_Condiciones" FromRole="Orden" ToRole="Condiciones" />
+    <NavigationProperty Name="Orden_Detalle" Relationship="Self.FK_Orden_Detalle_Orden" FromRole="Orden" ToRole="Orden_Detalle" />
+    <NavigationProperty Name="Orden_Tipo" Relationship="Self.FK_Orden_Orden_Tipo" FromRole="Orden" ToRole="Orden_Tipo" />
+  </EntityType>
+  <EntityType Name="Orden_Detalle">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Orden" Type="Int32" Nullable="false" />
+    <Property Name="Id_Producto" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cantidad" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Precio" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Impuesto" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Monto" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <NavigationProperty Name="Orden" Relationship="Self.FK_Orden_Detalle_Orden" FromRole="Orden_Detalle" ToRole="Orden" />
+    <NavigationProperty Name="Producto" Relationship="Self.FK_Orden_Detalle_Producto" FromRole="Orden_Detalle" ToRole="Producto" />
+  </EntityType>
+  <EntityType Name="Orden_Tipo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Secuencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Orden" Relationship="Self.FK_Orden_Orden_Tipo" FromRole="Orden_Tipo" ToRole="Orden" />
+  </EntityType>
+  <EntityType Name="Persona">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Nombre_Completo" Type="String" MaxLength="101" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="Documento" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="Titulo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Contacto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Empresa" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Correo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Comentarios" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Direccion_De_Envio" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Fecha_Nacimiento" Type="DateTime" Precision="0" />
+    <Property Name="Fecha" Type="DateTime" Precision="3" />
+    <Property Name="Balance" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Limite_Credito" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Id_Tipo_Persona" Type="Byte" Nullable="false" />
+    <Property Name="Id_Persona" Type="Int32" />
+    <Property Name="Id_Estatus" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Estatus" Relationship="Self.FK_Persona_Estatus" FromRole="Persona" ToRole="Estatus" />
+    <NavigationProperty Name="Persona_Tipo" Relationship="Self.FK_Persona_Persona_Tipo" FromRole="Persona" ToRole="Persona_Tipo" />
+    <NavigationProperty Name="Persona1" Relationship="Self.FK_Persona_Persona3" FromRole="Persona" ToRole="Persona1" />
+    <NavigationProperty Name="Persona2" Relationship="Self.FK_Persona_Persona3" FromRole="Persona1" ToRole="Persona" />
+  </EntityType>
+  <EntityType Name="Persona_Tipo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="secuencia1" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="secuencia2" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="secuencia3" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Persona" Relationship="Self.FK_Persona_Persona_Tipo" FromRole="Persona_Tipo" ToRole="Persona" />
+  </EntityType>
+  <EntityType Name="Producto">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cantidad" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Precio" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Costo" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Id_Impuesto" Type="Byte" Nullable="false" />
+    <Property Name="Id_Tipo" Type="Byte" Nullable="false" />
+    <Property Name="Id_Estatus" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Estatus" Relationship="Self.FK_Producto_Estatus" FromRole="Producto" ToRole="Estatus" />
+    <NavigationProperty Name="Orden_Detalle" Relationship="Self.FK_Orden_Detalle_Producto" FromRole="Producto" ToRole="Orden_Detalle" />
+    <NavigationProperty Name="Producto_Tipo" Relationship="Self.FK_Producto_Producto_Tipo" FromRole="Producto" ToRole="Producto_Tipo" />
+    <NavigationProperty Name="Tasa_Impuesto" Relationship="Self.FK_Producto_Tasa_Impuesto" FromRole="Producto" ToRole="Tasa_Impuesto" />
+  </EntityType>
+  <EntityType Name="Producto_Tipo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Secuencia1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Secuencia2" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Producto" Relationship="Self.FK_Producto_Producto_Tipo" FromRole="Producto_Tipo" ToRole="Producto" />
+  </EntityType>
+  <EntityType Name="Tasa_Impuesto">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Leyenda" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Tasa" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
+    <NavigationProperty Name="Producto" Relationship="Self.FK_Producto_Tasa_Impuesto" FromRole="Tasa_Impuesto" ToRole="Producto" />
+  </EntityType>
+  <EntityType Name="v_Orden">
+    <Key>
+      <PropertyRef Name="Orden_Id" />
+      <PropertyRef Name="Fecha" />
+      <PropertyRef Name="Id_Tipo" />
+      <PropertyRef Name="Tipo_de_orden_descripcion" />
+      <PropertyRef Name="Id_Condiciones" />
+      <PropertyRef Name="Condiciones_Descripcion" />
+      <PropertyRef Name="Subtotal" />
+      <PropertyRef Name="Descuento" />
+      <PropertyRef Name="Recargo" />
+      <PropertyRef Name="Impuestos" />
+      <PropertyRef Name="Total" />
+    </Key>
+    <Property Name="Orden_Id" Type="Int32" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Id_Persona" Type="Int32" />
+    <Property Name="Nombre_Completo" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
+    <Property Name="Persona_Tipo_descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Id_Tipo" Type="Int32" Nullable="false" />
+    <Property Name="Tipo_de_orden_descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Id_Condiciones" Type="Byte" Nullable="false" />
+    <Property Name="Condiciones_Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Subtotal" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Descuento" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Recargo" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Impuestos" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Total" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Id_Estatus" Type="Int32" />
+    <Property Name="Estatus_Descripcion" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="SecuenciaEditable" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="IdEditable" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Secuencia_Gobierno" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="v_Orden_Completa">
+    <Key>
+      <PropertyRef Name="Orden_Id" />
+      <PropertyRef Name="Fecha" />
+      <PropertyRef Name="Id_Tipo" />
+      <PropertyRef Name="Tipo_de_orden_descripcion" />
+      <PropertyRef Name="Id_Condiciones" />
+      <PropertyRef Name="Condiciones_Descripcion" />
+      <PropertyRef Name="Subtotal" />
+      <PropertyRef Name="Descuento" />
+      <PropertyRef Name="Recargo" />
+      <PropertyRef Name="Impuestos" />
+      <PropertyRef Name="Total" />
+      <PropertyRef Name="Id_Producto" />
+      <PropertyRef Name="Detalles_Descripcion" />
+      <PropertyRef Name="Cantidad" />
+      <PropertyRef Name="Precio" />
+      <PropertyRef Name="Impuesto" />
+      <PropertyRef Name="Monto" />
+    </Key>
+    <Property Name="Orden_Id" Type="Int32" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Id_Persona" Type="Int32" />
+    <Property Name="Nombre_Completo" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
+    <Property Name="Persona_Tipo_descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Id_Tipo" Type="Int32" Nullable="false" />
+    <Property Name="Tipo_de_orden_descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Id_Condiciones" Type="Byte" Nullable="false" />
+    <Property Name="Condiciones_Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Subtotal" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Descuento" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Recargo" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Impuestos" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Total" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Id_Estatus" Type="Int32" />
+    <Property Name="Estatus_Descripcion" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="SecuenciaEditable" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="IdEditable" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Secuencia_Gobierno" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Id_Producto" Type="Int32" Nullable="false" />
+    <Property Name="Detalles_Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cantidad" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Precio" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Impuesto" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Monto" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="v_Persona">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Id_Tipo_Persona" />
+      <PropertyRef Name="Id_Estatus" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Nombres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Nombre_Completo" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
+    <Property Name="Documento" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="Titulo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Contacto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Empresa" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Correo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Comentarios" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Direccion_De_Envio" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Fecha_Nacimiento" Type="DateTime" Precision="0" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+    <Property Name="Balance" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Limite_Credito" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Id_Tipo_Persona" Type="Byte" Nullable="false" />
+    <Property Name="Tipo_Persona" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Id_Persona" Type="Int32" />
+    <Property Name="Id_Estatus" Type="Int32" Nullable="false" />
+    <Property Name="Estatus_Descripcion" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="v_Producto">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Codigo" />
+      <PropertyRef Name="Cantidad" />
+      <PropertyRef Name="Descripcion" />
+      <PropertyRef Name="Precio" />
+      <PropertyRef Name="Costo" />
+      <PropertyRef Name="Id_Impuesto" />
+      <PropertyRef Name="Tasa" />
+      <PropertyRef Name="Id_Tipo" />
+      <PropertyRef Name="Id_Estatus" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cantidad" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Precio" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Costo" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Id_Impuesto" Type="Byte" Nullable="false" />
+    <Property Name="Descripcion_Impuesto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Leyenda" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Tasa" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
+    <Property Name="Id_Tipo" Type="Byte" Nullable="false" />
+    <Property Name="Tipo_Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Id_Estatus" Type="Int32" Nullable="false" />
+    <Property Name="Estatus_Descripcion" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_Orden_Estatus">
+    <End Role="Estatus" Type="Self.Estatus" Multiplicity="0..1" />
+    <End Role="Orden" Type="Self.Orden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estatus">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Orden">
+        <PropertyRef Name="Id_Estatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Persona_Estatus">
+    <End Role="Estatus" Type="Self.Estatus" Multiplicity="1" />
+    <End Role="Persona" Type="Self.Persona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estatus">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Persona">
+        <PropertyRef Name="Id_Estatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Producto_Estatus">
+    <End Role="Estatus" Type="Self.Estatus" Multiplicity="1" />
+    <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estatus">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Producto">
+        <PropertyRef Name="Id_Estatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orden_Condiciones">
+    <End Role="Condiciones" Type="Self.Condiciones" Multiplicity="1" />
+    <End Role="Orden" Type="Self.Orden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Condiciones">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Orden">
+        <PropertyRef Name="Id_Condiciones" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orden_Detalle_Orden">
+    <End Role="Orden" Type="Self.Orden" Multiplicity="1" />
+    <End Role="Orden_Detalle" Type="Self.Orden_Detalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orden">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Orden_Detalle">
+        <PropertyRef Name="Id_Orden" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orden_Orden_Tipo">
+    <End Role="Orden_Tipo" Type="Self.Orden_Tipo" Multiplicity="1" />
+    <End Role="Orden" Type="Self.Orden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orden_Tipo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Orden">
+        <PropertyRef Name="Id_Tipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orden_Detalle_Producto">
+    <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+    <End Role="Orden_Detalle" Type="Self.Orden_Detalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Orden_Detalle">
+        <PropertyRef Name="Id_Producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Persona_Persona_Tipo">
+    <End Role="Persona_Tipo" Type="Self.Persona_Tipo" Multiplicity="1" />
+    <End Role="Persona" Type="Self.Persona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona_Tipo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Persona">
+        <PropertyRef Name="Id_Tipo_Persona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Persona_Persona3">
+    <End Role="Persona" Type="Self.Persona" Multiplicity="0..1" />
+    <End Role="Persona1" Type="Self.Persona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Persona1">
+        <PropertyRef Name="Id_Persona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Producto_Producto_Tipo">
+    <End Role="Producto_Tipo" Type="Self.Producto_Tipo" Multiplicity="1" />
+    <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto_Tipo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Producto">
+        <PropertyRef Name="Id_Tipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Producto_Tasa_Impuesto">
+    <End Role="Tasa_Impuesto" Type="Self.Tasa_Impuesto" Multiplicity="1" />
+    <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tasa_Impuesto">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Producto">
+        <PropertyRef Name="Id_Impuesto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MD_MVCEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Estatus" EntityType="Self.Estatus" />
+    <EntitySet Name="Condiciones" EntityType="Self.Condiciones" />
+    <EntitySet Name="Orden" EntityType="Self.Orden" />
+    <EntitySet Name="Orden_Detalle" EntityType="Self.Orden_Detalle" />
+    <EntitySet Name="Orden_Tipo" EntityType="Self.Orden_Tipo" />
+    <EntitySet Name="Persona" EntityType="Self.Persona" />
+    <EntitySet Name="Persona_Tipo" EntityType="Self.Persona_Tipo" />
+    <EntitySet Name="Producto" EntityType="Self.Producto" />
+    <EntitySet Name="Producto_Tipo" EntityType="Self.Producto_Tipo" />
+    <EntitySet Name="Tasa_Impuesto" EntityType="Self.Tasa_Impuesto" />
+    <EntitySet Name="v_Orden" EntityType="Self.v_Orden" />
+    <EntitySet Name="v_Orden_Completa" EntityType="Self.v_Orden_Completa" />
+    <EntitySet Name="v_Persona" EntityType="Self.v_Persona" />
+    <EntitySet Name="v_Producto" EntityType="Self.v_Producto" />
+    <AssociationSet Name="FK_Orden_Estatus" Association="Self.FK_Orden_Estatus">
+      <End Role="Estatus" EntitySet="Estatus" />
+      <End Role="Orden" EntitySet="Orden" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Persona_Estatus" Association="Self.FK_Persona_Estatus">
+      <End Role="Estatus" EntitySet="Estatus" />
+      <End Role="Persona" EntitySet="Persona" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Producto_Estatus" Association="Self.FK_Producto_Estatus">
+      <End Role="Estatus" EntitySet="Estatus" />
+      <End Role="Producto" EntitySet="Producto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orden_Condiciones" Association="Self.FK_Orden_Condiciones">
+      <End Role="Condiciones" EntitySet="Condiciones" />
+      <End Role="Orden" EntitySet="Orden" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orden_Detalle_Orden" Association="Self.FK_Orden_Detalle_Orden">
+      <End Role="Orden" EntitySet="Orden" />
+      <End Role="Orden_Detalle" EntitySet="Orden_Detalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orden_Orden_Tipo" Association="Self.FK_Orden_Orden_Tipo">
+      <End Role="Orden_Tipo" EntitySet="Orden_Tipo" />
+      <End Role="Orden" EntitySet="Orden" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orden_Detalle_Producto" Association="Self.FK_Orden_Detalle_Producto">
+      <End Role="Producto" EntitySet="Producto" />
+      <End Role="Orden_Detalle" EntitySet="Orden_Detalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Persona_Persona_Tipo" Association="Self.FK_Persona_Persona_Tipo">
+      <End Role="Persona_Tipo" EntitySet="Persona_Tipo" />
+      <End Role="Persona" EntitySet="Persona" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Persona_Persona3" Association="Self.FK_Persona_Persona3">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="Persona1" EntitySet="Persona" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Producto_Producto_Tipo" Association="Self.FK_Producto_Producto_Tipo">
+      <End Role="Producto_Tipo" EntitySet="Producto_Tipo" />
+      <End Role="Producto" EntitySet="Producto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Producto_Tasa_Impuesto" Association="Self.FK_Producto_Tasa_Impuesto">
+      <End Role="Tasa_Impuesto" EntitySet="Tasa_Impuesto" />
+      <End Role="Producto" EntitySet="Producto" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

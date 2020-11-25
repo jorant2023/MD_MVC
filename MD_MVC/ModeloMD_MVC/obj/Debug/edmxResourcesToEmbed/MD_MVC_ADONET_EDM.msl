@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MD_MVCModelStoreContainer" CdmEntityContainer="MD_MVCEntities">
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="MD_MVCModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Estatus">
+      <EntityTypeMapping TypeName="MD_MVCModel.Estatus">
+        <MappingFragment StoreEntitySet="Estatus">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Id_Estatus" ColumnName="Id_Estatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Condiciones">
+      <EntityTypeMapping TypeName="MD_MVCModel.Condiciones">
+        <MappingFragment StoreEntitySet="Condiciones">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orden">
+      <EntityTypeMapping TypeName="MD_MVCModel.Orden">
+        <MappingFragment StoreEntitySet="Orden">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Id_Persona" ColumnName="Id_Persona" />
+          <ScalarProperty Name="Id_Tipo" ColumnName="Id_Tipo" />
+          <ScalarProperty Name="Id_Condiciones" ColumnName="Id_Condiciones" />
+          <ScalarProperty Name="Subtotal" ColumnName="Subtotal" />
+          <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+          <ScalarProperty Name="Recargo" ColumnName="Recargo" />
+          <ScalarProperty Name="Impuestos" ColumnName="Impuestos" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Id_Estatus" ColumnName="Id_Estatus" />
+          <ScalarProperty Name="SecuenciaEditable" ColumnName="SecuenciaEditable" />
+          <ScalarProperty Name="IdEditable" ColumnName="IdEditable" />
+          <ScalarProperty Name="Secuencia_Gobierno" ColumnName="Secuencia_Gobierno" />
+          <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orden_Detalle">
+      <EntityTypeMapping TypeName="MD_MVCModel.Orden_Detalle">
+        <MappingFragment StoreEntitySet="Orden_Detalle">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Id_Orden" ColumnName="Id_Orden" />
+          <ScalarProperty Name="Id_Producto" ColumnName="Id_Producto" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
+          <ScalarProperty Name="Monto" ColumnName="Monto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orden_Tipo">
+      <EntityTypeMapping TypeName="MD_MVCModel.Orden_Tipo">
+        <MappingFragment StoreEntitySet="Orden_Tipo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Secuencia" ColumnName="Secuencia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Persona">
+      <EntityTypeMapping TypeName="MD_MVCModel.Persona">
+        <MappingFragment StoreEntitySet="Persona">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="Nombre_Completo" ColumnName="Nombre_Completo" />
+          <ScalarProperty Name="Documento" ColumnName="Documento" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="Contacto" ColumnName="Contacto" />
+          <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Comentarios" ColumnName="Comentarios" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Direccion_De_Envio" ColumnName="Direccion_De_Envio" />
+          <ScalarProperty Name="Fecha_Nacimiento" ColumnName="Fecha_Nacimiento" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
+          <ScalarProperty Name="Limite_Credito" ColumnName="Limite_Credito" />
+          <ScalarProperty Name="Id_Tipo_Persona" ColumnName="Id_Tipo_Persona" />
+          <ScalarProperty Name="Id_Persona" ColumnName="Id_Persona" />
+          <ScalarProperty Name="Id_Estatus" ColumnName="Id_Estatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Persona_Tipo">
+      <EntityTypeMapping TypeName="MD_MVCModel.Persona_Tipo">
+        <MappingFragment StoreEntitySet="Persona_Tipo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="secuencia1" ColumnName="secuencia1" />
+          <ScalarProperty Name="secuencia2" ColumnName="secuencia2" />
+          <ScalarProperty Name="secuencia3" ColumnName="secuencia3" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Producto">
+      <EntityTypeMapping TypeName="MD_MVCModel.Producto">
+        <MappingFragment StoreEntitySet="Producto">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Costo" ColumnName="Costo" />
+          <ScalarProperty Name="Id_Impuesto" ColumnName="Id_Impuesto" />
+          <ScalarProperty Name="Id_Tipo" ColumnName="Id_Tipo" />
+          <ScalarProperty Name="Id_Estatus" ColumnName="Id_Estatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Producto_Tipo">
+      <EntityTypeMapping TypeName="MD_MVCModel.Producto_Tipo">
+        <MappingFragment StoreEntitySet="Producto_Tipo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Secuencia1" ColumnName="Secuencia1" />
+          <ScalarProperty Name="Secuencia2" ColumnName="Secuencia2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tasa_Impuesto">
+      <EntityTypeMapping TypeName="MD_MVCModel.Tasa_Impuesto">
+        <MappingFragment StoreEntitySet="Tasa_Impuesto">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Leyenda" ColumnName="Leyenda" />
+          <ScalarProperty Name="Tasa" ColumnName="Tasa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="v_Orden">
+      <EntityTypeMapping TypeName="MD_MVCModel.v_Orden">
+        <MappingFragment StoreEntitySet="v_Orden">
+          <ScalarProperty Name="Orden_Id" ColumnName="Orden_Id" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Id_Persona" ColumnName="Id_Persona" />
+          <ScalarProperty Name="Nombre_Completo" ColumnName="Nombre_Completo" />
+          <ScalarProperty Name="Persona_Tipo_descripcion" ColumnName="Persona_Tipo_descripcion" />
+          <ScalarProperty Name="Id_Tipo" ColumnName="Id_Tipo" />
+          <ScalarProperty Name="Tipo_de_orden_descripcion" ColumnName="Tipo_de_orden_descripcion" />
+          <ScalarProperty Name="Id_Condiciones" ColumnName="Id_Condiciones" />
+          <ScalarProperty Name="Condiciones_Descripcion" ColumnName="Condiciones_Descripcion" />
+          <ScalarProperty Name="Subtotal" ColumnName="Subtotal" />
+          <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+          <ScalarProperty Name="Recargo" ColumnName="Recargo" />
+          <ScalarProperty Name="Impuestos" ColumnName="Impuestos" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Id_Estatus" ColumnName="Id_Estatus" />
+          <ScalarProperty Name="Estatus_Descripcion" ColumnName="Estatus_Descripcion" />
+          <ScalarProperty Name="SecuenciaEditable" ColumnName="SecuenciaEditable" />
+          <ScalarProperty Name="IdEditable" ColumnName="IdEditable" />
+          <ScalarProperty Name="Secuencia_Gobierno" ColumnName="Secuencia_Gobierno" />
+          <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="v_Orden_Completa">
+      <EntityTypeMapping TypeName="MD_MVCModel.v_Orden_Completa">
+        <MappingFragment StoreEntitySet="v_Orden_Completa">
+          <ScalarProperty Name="Orden_Id" ColumnName="Orden_Id" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Id_Persona" ColumnName="Id_Persona" />
+          <ScalarProperty Name="Nombre_Completo" ColumnName="Nombre_Completo" />
+          <ScalarProperty Name="Persona_Tipo_descripcion" ColumnName="Persona_Tipo_descripcion" />
+          <ScalarProperty Name="Id_Tipo" ColumnName="Id_Tipo" />
+          <ScalarProperty Name="Tipo_de_orden_descripcion" ColumnName="Tipo_de_orden_descripcion" />
+          <ScalarProperty Name="Id_Condiciones" ColumnName="Id_Condiciones" />
+          <ScalarProperty Name="Condiciones_Descripcion" ColumnName="Condiciones_Descripcion" />
+          <ScalarProperty Name="Subtotal" ColumnName="Subtotal" />
+          <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+          <ScalarProperty Name="Recargo" ColumnName="Recargo" />
+          <ScalarProperty Name="Impuestos" ColumnName="Impuestos" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Id_Estatus" ColumnName="Id_Estatus" />
+          <ScalarProperty Name="Estatus_Descripcion" ColumnName="Estatus_Descripcion" />
+          <ScalarProperty Name="SecuenciaEditable" ColumnName="SecuenciaEditable" />
+          <ScalarProperty Name="IdEditable" ColumnName="IdEditable" />
+          <ScalarProperty Name="Secuencia_Gobierno" ColumnName="Secuencia_Gobierno" />
+          <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+          <ScalarProperty Name="Id_Producto" ColumnName="Id_Producto" />
+          <ScalarProperty Name="Detalles_Descripcion" ColumnName="Detalles_Descripcion" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
+          <ScalarProperty Name="Monto" ColumnName="Monto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="v_Persona">
+      <EntityTypeMapping TypeName="MD_MVCModel.v_Persona">
+        <MappingFragment StoreEntitySet="v_Persona">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="Nombre_Completo" ColumnName="Nombre_Completo" />
+          <ScalarProperty Name="Documento" ColumnName="Documento" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="Contacto" ColumnName="Contacto" />
+          <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Comentarios" ColumnName="Comentarios" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Direccion_De_Envio" ColumnName="Direccion_De_Envio" />
+          <ScalarProperty Name="Fecha_Nacimiento" ColumnName="Fecha_Nacimiento" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
+          <ScalarProperty Name="Limite_Credito" ColumnName="Limite_Credito" />
+          <ScalarProperty Name="Id_Tipo_Persona" ColumnName="Id_Tipo_Persona" />
+          <ScalarProperty Name="Tipo_Persona" ColumnName="Tipo_Persona" />
+          <ScalarProperty Name="Id_Persona" ColumnName="Id_Persona" />
+          <ScalarProperty Name="Id_Estatus" ColumnName="Id_Estatus" />
+          <ScalarProperty Name="Estatus_Descripcion" ColumnName="Estatus_Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="v_Producto">
+      <EntityTypeMapping TypeName="MD_MVCModel.v_Producto">
+        <MappingFragment StoreEntitySet="v_Producto">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Costo" ColumnName="Costo" />
+          <ScalarProperty Name="Id_Impuesto" ColumnName="Id_Impuesto" />
+          <ScalarProperty Name="Descripcion_Impuesto" ColumnName="Descripcion_Impuesto" />
+          <ScalarProperty Name="Leyenda" ColumnName="Leyenda" />
+          <ScalarProperty Name="Tasa" ColumnName="Tasa" />
+          <ScalarProperty Name="Id_Tipo" ColumnName="Id_Tipo" />
+          <ScalarProperty Name="Tipo_Descripcion" ColumnName="Tipo_Descripcion" />
+          <ScalarProperty Name="Id_Estatus" ColumnName="Id_Estatus" />
+          <ScalarProperty Name="Estatus_Descripcion" ColumnName="Estatus_Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

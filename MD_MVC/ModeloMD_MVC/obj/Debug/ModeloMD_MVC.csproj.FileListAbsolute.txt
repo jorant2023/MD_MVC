@@ -1,0 +1,12 @@
+C:\Users\Jorge Antonio\Documents\GitHub\asps\MD_MVC\MD_MVC\ModeloMD_MVC\bin\Debug\ModeloMD_MVC.dll.config
+C:\Users\Jorge Antonio\Documents\GitHub\asps\MD_MVC\MD_MVC\ModeloMD_MVC\bin\Debug\ModeloMD_MVC.dll
+C:\Users\Jorge Antonio\Documents\GitHub\asps\MD_MVC\MD_MVC\ModeloMD_MVC\bin\Debug\ModeloMD_MVC.pdb
+C:\Users\Jorge Antonio\Documents\GitHub\asps\MD_MVC\MD_MVC\ModeloMD_MVC\bin\Debug\EntityFramework.dll
+C:\Users\Jorge Antonio\Documents\GitHub\asps\MD_MVC\MD_MVC\ModeloMD_MVC\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Jorge Antonio\Documents\GitHub\asps\MD_MVC\MD_MVC\ModeloMD_MVC\bin\Debug\EntityFramework.xml
+C:\Users\Jorge Antonio\Documents\GitHub\asps\MD_MVC\MD_MVC\ModeloMD_MVC\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Jorge Antonio\Documents\GitHub\asps\MD_MVC\MD_MVC\ModeloMD_MVC\obj\Debug\ModeloMD_MVC.csprojAssemblyReference.cache
+C:\Users\Jorge Antonio\Documents\GitHub\asps\MD_MVC\MD_MVC\ModeloMD_MVC\obj\Debug\ModeloMD_MVC.csproj.CoreCompileInputs.cache
+C:\Users\Jorge Antonio\Documents\GitHub\asps\MD_MVC\MD_MVC\ModeloMD_MVC\obj\Debug\ModeloMD_MVC.csproj.CopyComplete
+C:\Users\Jorge Antonio\Documents\GitHub\asps\MD_MVC\MD_MVC\ModeloMD_MVC\obj\Debug\ModeloMD_MVC.dll
+C:\Users\Jorge Antonio\Documents\GitHub\asps\MD_MVC\MD_MVC\ModeloMD_MVC\obj\Debug\ModeloMD_MVC.pdb

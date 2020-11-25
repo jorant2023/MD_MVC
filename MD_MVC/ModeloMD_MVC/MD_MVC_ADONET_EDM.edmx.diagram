@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c6e7bcf57c1d40b5ba62ecf24ed0aff8" Name="Diagram1">
+        <EntityTypeShape EntityType="MD_MVCModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MD_MVCModel.Estatus" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="MD_MVCModel.Condiciones" Width="1.5" PointX="0.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MD_MVCModel.Orden" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MD_MVCModel.Orden_Detalle" Width="1.5" PointX="5.25" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MD_MVCModel.Orden_Tipo" Width="1.5" PointX="0.75" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MD_MVCModel.Persona" Width="1.5" PointX="6" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MD_MVCModel.Persona_Tipo" Width="1.5" PointX="3.75" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="MD_MVCModel.Producto" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MD_MVCModel.Producto_Tipo" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MD_MVCModel.Tasa_Impuesto" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MD_MVCModel.v_Orden" Width="1.5" PointX="8.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MD_MVCModel.v_Orden_Completa" Width="1.5" PointX="8.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MD_MVCModel.v_Persona" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MD_MVCModel.v_Producto" Width="1.5" PointX="10.75" PointY="6.75" IsExpanded="true" />
+        <AssociationConnector Association="MD_MVCModel.FK_Orden_Estatus" ManuallyRouted="false" />
+        <AssociationConnector Association="MD_MVCModel.FK_Persona_Estatus" ManuallyRouted="false" />
+        <AssociationConnector Association="MD_MVCModel.FK_Producto_Estatus" ManuallyRouted="false" />
+        <AssociationConnector Association="MD_MVCModel.FK_Orden_Condiciones" ManuallyRouted="false" />
+        <AssociationConnector Association="MD_MVCModel.FK_Orden_Detalle_Orden" ManuallyRouted="false" />
+        <AssociationConnector Association="MD_MVCModel.FK_Orden_Orden_Tipo" ManuallyRouted="false" />
+        <AssociationConnector Association="MD_MVCModel.FK_Orden_Detalle_Producto" ManuallyRouted="false" />
+        <AssociationConnector Association="MD_MVCModel.FK_Persona_Persona_Tipo" ManuallyRouted="false" />
+        <AssociationConnector Association="MD_MVCModel.FK_Persona_Persona3" ManuallyRouted="false" />
+        <AssociationConnector Association="MD_MVCModel.FK_Producto_Producto_Tipo" ManuallyRouted="false" />
+        <AssociationConnector Association="MD_MVCModel.FK_Producto_Tasa_Impuesto" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
