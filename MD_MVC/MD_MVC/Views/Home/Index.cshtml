@@ -10,6 +10,8 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Maestro Detalle</title>
+
+    
     <link href="~/Content/uikit.css" rel="stylesheet" />
     <link href="~/Content/select2.min.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
@@ -17,14 +19,38 @@
     <link href="~/Content/animate.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+
+
 </head>
 <body>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="#ModalPersona" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="uk-container uk-container-center" id="epn_container">
         <div class="menu__top">
             <ul class="menu" data-uk-switcher="{connect:'#my-id', animation: 'uk-animation-fade, uk-animation-slide-left'}">
                 <li aria-expanded="true" class="uk-active">
                     <a href="">
-                        Inicio
+                        Inici0
                     </a>
                 </li>
                 <li aria-expanded="false" class="">
@@ -117,9 +143,11 @@
                         @*Aquí se llena automático desde el servidor por Java Script*@
                     </select>
                     <a class="color-white force-color" data-toggle="modal" data-target="#ModalPersona">
-                        <i class="uk-icon-large uk-icon-plus-square-o">
-                        </i><br>
-                    </a>
+                            <i class="uk-icon-large uk-icon-plus-square-o">
+                            </i><br>
+                        </a>
+
+               
                 </div>
                 <div class="uk-float-right">
                     <label class="uk-label color-white">
@@ -278,6 +306,8 @@
     <div class="loaderbody" id="loaderbody">
         <div class="loader" id="loader"></div>
     </div>
+
+
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/uikit.min.js"></script>
     <script src="~/Scripts/select2.min.js"></script>
@@ -287,6 +317,8 @@
     <script src="~/Scripts/Home/Index.js"></script>
     <script src="~/Scripts/jquery.tabletojson.min.js"></script>
     <script src="~/Scripts/jquery.jeditable.min.js"></script>
+
+
 
     <script>
         var datos = @Html.Action("PersonasSelect2");
